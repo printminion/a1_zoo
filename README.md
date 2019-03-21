@@ -3,29 +3,40 @@ A1 Zoo 🐼
 
 To run as docker image with composer
 ```bash
-#build image
 docker-compose build
-```
-
-
-```bash
-#run with cli 
 docker-compose run cli python calculate.py --api_base_url=http://prod.example.de:8020
 ```
  
 
-To run as docker container with composer
+To run as docker container 
 ```bash
 docker build . -t a1_zoo
 docker run -it --rm a1_zoo python calculate.py --api_base_url=http://prod.example.de:8020
 ```
 
-Configurable via CLI arguments or via ENV
-
-
-API_BACKEND=http://prod.example.de:8020
-
+Run via CLI with arguments
+```bash
 python calculate.py --api_base_url=http://prod.example.de:8020
+```
+
+or with or with ENV
+```bash
+export API_BASE_URL=http://prod.example.de:8020
+python calculate.py 
+```
+
+run tests
+```bash
+$ make test
+nosetests tests
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.038s
+
+OK
+```
+
+Example output
 
 ```
 $ docker-compose run cli python calculate.py --api_base_url=http://prod.example.de:8020

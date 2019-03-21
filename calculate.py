@@ -38,7 +38,7 @@ def get_env_config(env_variable):
         print("Error: please define %s env variable" % env_variable)
         exit(1)
 
-    print(os.environ[env_variable])
+    return os.environ[env_variable]
 
 
 def main(argv):
@@ -65,6 +65,8 @@ def main(argv):
     if settings.API_BASE_URL == '' or settings.API_BASE_URL == None:
         print("No --api_base_url= is set. try to get API_BASE_URL env")
         settings.API_BASE_URL = get_env_config('API_BASE_URL')
+
+    print(settings.API_BASE_URL)
 
     if settings.API_BASE_URL == '' or settings.API_BASE_URL == None:
         print('Please set --api_base_url=')
